@@ -1,0 +1,29 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Large equilibrium test
+      id: large-equilibrium-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Large equilibrium test
+        setup-command: make clean; make
+        command: "./lab6 -e -m 655373 -t 500000"
+        timeout: 2
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        LARGE-EQUILIBRIUM-TEST_RESULTS: "${{steps.large-equilibrium-test.outputs.result}}"
+      with:
+        runners: large-equilibrium-test
