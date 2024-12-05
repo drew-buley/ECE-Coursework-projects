@@ -1,14 +1,17 @@
 /*
  * Drew Buley
  * C20407096
- * 12/02/2024
+ * 12/05/2024
  * MP6
  *
- * Purpose:
+ * Purpose: This file contains functions for creating and maintaining
+ *          a hash table ADT. It was built to be called by lab6.c and was only tested
+ *          for functionality related to the drivers contained therein.
  *
- * Assumptions:
+ * Assumptions: lab6.c only calls these functions with valid parameters and 
+ *              is setup to correctly process the return values of these functions
  *
- * Bugs:
+ * Bugs: Currently does not check table size vs probe type to ensure they are compatible.
  *
  */
 
@@ -36,16 +39,37 @@
  */
 table_t *table_construct(int table_size, int probe_type) 
 {
+    assert(table_size > 0);
     // create new table header
     table_t *new_table = (table_t*)malloc(sizeof(table_t));
 
     //initialize table values
     new_table->table_size = table_size;
     new_table->type_of_probing = probe_type;
+
+    //protection agaist mismatched table sizes and probing styles
+    //assignment specs call for this to be disabled
+    /*
+    if (probe_type == DOUBLE) {
+        if ((table_size > 2) && ((table_size % 2)) == 0) {
+            //all even numbers larger than 2 are guranteed not to be prime
+            printf("Cannot use DOUBLE PROBING with this table size\n");
+            printf("Table sizes for DOUBLE must be relatively prime, you entered: %d\n",table_size);
+            exit(1);
+        }
+    } else if (probe_type == QUAD) {
+        //fully check if table size is power of 2
+        if ((table_size & (table_size - 1)) == 0) {
+            printf("Cannot use QUADRATIC PROBING with this table size\n");
+            printf("Table sizes for QUAD must be a power of 2, you entered: %d\n", table_size);
+            exit(1);
+        }
+    }
+    */
     new_table->num_keys = 0;
     new_table->num_probes = 0;
 
-    // create new table ADT
+    //set table keys to default value
     new_table->oa = (table_entry_t *)malloc(new_table->table_size * sizeof(table_entry_t));
     for (int i = 0; i < new_table->table_size; i++) {
         new_table->oa[i].key = empty;
@@ -105,19 +129,21 @@ int table_insert(table_t *table, hashkey_t K, data_t I)
     }
 
     int del_found = 0;
-    int del_index = -1;
-    table->num_probes++; //must increment here or insert direct to empty will be wrong
+    int del_index = -1; // also used as stop condition when no empty slots left in table
+    table->num_probes++; //must increment here or insert direct to empty slot will be wrong
 
+    // Find slot to enter (K, I)
     while ((table->oa[index].key != empty) && index != del_index) {
         if (table->oa[index].key == K) {
             free(table->oa[index].data_ptr);
             table->oa[index].data_ptr = I;
-            return 1;
+            return 1; //replaced data at target
         } else if ((table->oa[index].key == deleted) && (del_found == 0)) {
             //insert here unless find key already in table
             del_index = index;
             del_found++;
         }
+
         //need to probe additional spot
         if (table->type_of_probing == QUAD) {
             prob_dec++;
@@ -131,9 +157,9 @@ int table_insert(table_t *table, hashkey_t K, data_t I)
         }
     }
 
-    //check if table full here as could have found dupe to update in a full table
+    //check if table full here as could have found dupe to update in a full table in above loop
     if ((table->table_size - table->num_keys) == 1) {
-        return -1;
+        return -1; //not able to insert into table
     }
     if (del_index != -1) {
         table->oa[del_index].key = K;
@@ -161,7 +187,7 @@ data_t table_delete(table_t *table, hashkey_t K)
         prob_dec = 0;
     }
 
-    int init_index = index;
+    int init_index = index; //used as stop con when table has no empty cells
     while ((table->oa[index].key != empty)) {
         if (table->oa[index].key == K) {
             //found key to delete
@@ -177,7 +203,7 @@ data_t table_delete(table_t *table, hashkey_t K)
         while (index < 0) {
             index += table->table_size;
         }
-        if (index == init_index) {
+        if (index == init_index) { //checks if next index is where loop started
             break;
         }
         table->num_probes++;
@@ -246,15 +272,13 @@ table_t *table_rehash(table_t * T, int new_table_size)
         if ((T->oa[i].key == empty) || (T->oa[i].key == deleted)) {
             continue; //don't need to transfer this cell
         }
-        //could decrement old table size with each insert to know more efficiently if all data transfered
         int check_ins = table_insert(new_table, T->oa[i].key, T->oa[i].data_ptr);
         assert(check_ins == 0);
-        T->num_keys--; //suspect line, not confident in this yet
+        T->num_keys--;
         if (T->num_keys == 0) { //no vaild keys remianing in old table
             break;
         }
     }
-    //destruct old table
     table_destruct(T);
     return new_table;
 }
@@ -330,6 +354,7 @@ hashkey_t table_peek(table_t *table, int index)
  */
 void table_debug_print(table_t *table) 
 {
+    //not the prettiest print but is functional as a debugging tool
     printf("\nprinting table of size %d with %d unique keys:\n", table->table_size, table->num_keys);
     printf("index\t\t\t\tkey value\n");
     for (int i = 0; i < table->table_size; i++) {

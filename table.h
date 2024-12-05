@@ -1,6 +1,9 @@
 /* table.h 
  * Lab6: Hash Tables 
  * ECE 2230, Fall 2024
+ * Drew Buley
+ * C20407096
+ * 12/5/2024
  */
 
 /* constants used to indicate type of probing.  */
@@ -115,4 +118,3 @@ hashkey_t table_peek(table_t *T, int index);
  * Only useful when the table is small.
  */
 void table_debug_print(table_t *T);
-

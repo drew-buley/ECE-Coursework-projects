@@ -1,6 +1,9 @@
 /* lab6.c 
  * Lab6: Hash Tables 
  * ECE 2230, Fall 2024
+ * Drew Buley
+ * C20407096
+ * 12/5/2024
  *
  * This file contains drivers to test the Hash Table ADT package.
  *
@@ -90,6 +93,7 @@ static int EquilibriumTest = FALSE;
 static int RehashTest = FALSE;
 static int DeletionTest = FALSE;
 static int TwoSumTest = 0;
+static int SpecialTest = FALSE;
 static int Trials = 50000;
 static int Seed = 11172024;
 
@@ -99,6 +103,7 @@ void equilibriumDriver(void);
 void RetrieveDriver(void);
 void RehashDriver(int);
 void TwoSumDriver(int);
+void specialDriver(void);
 int build_random(table_t *T, int ,int);
 int build_seq(table_t *T, int, int);
 int build_fold(table_t *T, int, int);
@@ -143,6 +148,10 @@ int main(int argc, char **argv)
     if (EquilibriumTest)                   /* enable with -e flag */
         equilibriumDriver();
 
+    /* test special cases */
+    if (SpecialTest)                       /*enable with -q flag  */
+        specialDriver();
+
     return 0;
 }
 
@@ -176,6 +185,72 @@ void build_table(table_t *test_table, int num_keys)
     assert(size == num_keys);
 }
 
+
+/* This driver tests special edge cases such as deleting a key not in table
+ * deleting from empty table, inserting into a full table
+ * Inputs: none
+ * Outputs: prints success or fail to command line
+ */
+void specialDriver() {
+    int nums[] = {1, 2, 4, 3, 8, 5};
+    int bad_test_key = 40;
+    int extra_key = 6;
+    int check_ins;
+    int *ip;
+
+    int nums_size = sizeof(nums)/sizeof(int);
+    table_t *table = table_construct(nums_size +1, ProbeDec);
+    table_debug_print(table);
+    data_t *check_del = table_delete(table, bad_test_key);
+    assert(check_del == NULL);
+
+    for (int i = 0; i < nums_size; i++) {
+        ip = (int *)malloc(sizeof(int));
+        check_ins = table_insert(table, nums[i], ip);
+        assert(check_ins == 0);
+    }
+
+    printf("table is now full\n");
+    table_debug_print(table);
+    printf("now trying to insert into full table with an empty cell\n");
+    ip = (int *)malloc(sizeof(int));
+    check_ins = table_insert(table, bad_test_key, ip);
+    table_debug_print(table);
+    assert(check_ins == -1);
+    free(ip); //as was not inserted into table
+
+    printf("now trying to delete entry not in full table\n");
+    check_del = table_delete(table, bad_test_key);
+    table_debug_print(table);
+    assert(check_del == NULL);
+
+    printf("replacing the empty cell with a deleted cell then attempting an insert followed\n");
+    printf("by a delete of a key not in the table\n");
+    check_del = table_delete(table, nums[nums_size-1]);
+    free(check_del);
+
+    ip = (int *)malloc(sizeof(int));
+    table_insert(table, extra_key, ip);
+
+    check_del = table_delete(table, extra_key);
+    free(check_del);
+
+    ip = (int *)malloc(sizeof(int));
+    table_insert(table, nums[nums_size-1], ip);
+
+
+    ip = (int*)malloc(sizeof(int));
+    check_ins = table_insert(table, bad_test_key, ip);
+    assert(check_ins == -1);
+    free(ip); //as was not placed into table
+
+    check_del = table_delete(table, bad_test_key);
+    assert(check_del == NULL);
+    table_debug_print(table);
+    table_destruct(table);
+}
+
+
 /* deletion driver with replacement and table size of 7
  *
  * This test is identical to HW Set 8 problem 6.
@@ -194,6 +269,7 @@ void build_table(table_t *test_table, int num_keys)
  *    Key k3 must be replaced and not occur in the table twice.
  *    Key k5 must be stored in location 5.
  */
+
 void DeletionDriver()
 {
 #define TABLESIZE 7
@@ -783,16 +859,27 @@ void RetrieveDriver()
  *
  * Note -m does not set the size of the hash table.
  * Instead you determine an appropriate hash table size.
+ *
+ * BUGS: Currently does not set hash table sizes correctly for double and quad
  */
 void twoSum(const int* nums, const int numsSize, const int target, int *ans1, int *ans2)
 {
     int check_ins;
-    int probe_type = LINEAR; //can change type when needed for data
     int complement;
     data_t *check_look; 
     int *ip;
 
-    table_t *table = table_construct(2*numsSize, probe_type);
+    int table_size = 2*numsSize; //default for linear
+    if (ProbeDec == DOUBLE) {
+        table_size = find_first_prime(2*numsSize);
+    } else if (ProbeDec == QUAD) {
+        table_size = 2;
+        while (table_size < 2*numsSize) {
+            table_size *= 2;
+        }
+    }
+
+    table_t *table = table_construct(table_size, ProbeDec);
 
     //place ints as keys in hash table, place num_index as data
     for (int i = 0; i < numsSize; i++) {
@@ -1436,7 +1523,7 @@ void getCommandLine(int argc, char **argv)
     int c;
     int index;
 
-    while ((c = getopt(argc, argv, "m:a:h:f:i:t:s:p:erbdv")) != -1)
+    while ((c = getopt(argc, argv, "m:a:h:f:i:t:s:p:qerbdv")) != -1)
         switch(c) {
             case 'm': TableSize = atoi(optarg);      break;
             case 'a': LoadFactor = atof(optarg);     break;
@@ -1448,6 +1535,7 @@ void getCommandLine(int argc, char **argv)
             case 'b': RehashTest = TRUE;             break;
             case 'd': DeletionTest = TRUE;           break;
             case 'p': TwoSumTest = atoi(optarg);     break;
+            case 'q': SpecialTest = TRUE;            break;
             case 'h':
                       if (strcmp(optarg, "linear") == 0)
                           ProbeDec = LINEAR;
