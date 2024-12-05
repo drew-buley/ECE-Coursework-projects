@@ -786,8 +786,34 @@ void RetrieveDriver()
  */
 void twoSum(const int* nums, const int numsSize, const int target, int *ans1, int *ans2)
 {
-    *ans1 = 0;
-    *ans2 = 1;
+    int check_ins;
+    int probe_type = LINEAR; //can change type when needed for data
+    int complement;
+    data_t *check_look; 
+    int *ip;
+
+    table_t *table = table_construct(2*numsSize, probe_type);
+
+    //place ints as keys in hash table, place num_index as data
+    for (int i = 0; i < numsSize; i++) {
+        complement = target - nums[i]; //calculate solution 2
+        check_look = table_retrieve(table, complement); //check if sol 2 already in hash table
+        if (check_look != NULL) { //if it was, check look contains the index it was at
+            *ans1 = *(int *)check_look;
+            *ans2 = i;
+            if (*ans1 == *ans2) {
+                continue; //can't be the same index
+            }
+            table_destruct(table);
+            break;
+        }
+        //solution not already in table
+        ip = (int *)malloc(sizeof(int));
+        *ip = i;
+        check_ins = table_insert(table, nums[i], ip);
+        //check return values of this
+        assert(check_ins == 0);
+    }
 }
 
 /* support function to generate arrays for Two Sums Problem

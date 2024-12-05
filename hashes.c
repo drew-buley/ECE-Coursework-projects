@@ -7,8 +7,6 @@
  *
  *    hashes_table_pos
  *    hashes_probe_dec
- *         
- *
  *
  *
  * Most notes and functions are from Eternally Confuzzled web page by Julienne

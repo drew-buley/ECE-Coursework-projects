@@ -16,10 +16,10 @@ typedef struct table_etag {
 
 typedef struct table_tag {
     // you need to fill in details, and you can change the names!
-    int table_size_M;
-    int type_of_probing_used_for_this_table;
-    int num_keys_stored_in_table;
-    int num_probes_for_most_recent_call;
+    int table_size;
+    int type_of_probing;
+    int num_keys;
+    int num_probes;
     table_entry_t *oa;
 } table_t;
 
