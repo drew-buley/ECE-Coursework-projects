@@ -1,0 +1,1120 @@
+Open addressing with linear probe sequence
+Using hash algorithm abs_hash
+Seed: 11172024
+
+----- Rehash driver -----
+Table size (11), load factor (0.9)
+0: about to insert 11 at position 0
+1: about to insert 12 at position 1
+2: about to insert 13 at position 2
+3: about to insert 14 at position 3
+4: about to insert 15 at position 4
+5: about to insert 16 at position 5
+6: about to insert 17 at position 6
+7: about to insert 18 at position 7
+8: about to insert 19 at position 8
+9: about to insert 20 at position 9
+
+full table, last entry empty
+
+printing table of size 11 with 10 unique keys:
+index				key value
+0				11
+1				12
+2				13
+3				14
+4				15
+5				16
+6				17
+7				18
+8				19
+9				20
+10				empty
+print completed
+
+0: about to retrieve and then replace 11
+1: about to retrieve and then replace 12
+2: about to retrieve and then replace 13
+3: about to retrieve and then replace 14
+4: about to retrieve and then replace 15
+5: about to retrieve and then replace 16
+6: about to retrieve and then replace 17
+7: about to retrieve and then replace 18
+8: about to retrieve and then replace 19
+9: about to retrieve and then replace 20
+about to delete 12
+
+second entry deleted, last entry empty
+
+printing table of size 11 with 9 unique keys:
+index				key value
+0				11
+1				deleted
+2				13
+3				14
+4				15
+5				16
+6				17
+7				18
+8				19
+9				20
+10				empty
+print completed
+
+
+ about to insert 23 at 1
+
+ after clearing out all but two keys
+
+printing table of size 11 with 2 unique keys:
+index				key value
+0				11
+1				23
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				empty
+print completed
+
+
+ about to insert 21 at 10
+
+ after inserting into delete or empty position 
+
+printing table of size 11 with 3 unique keys:
+index				key value
+0				11
+1				23
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				21
+print completed
+
+
+ about to search for 22 at 0
+
+ verify 5 items in table before rehash 
+
+printing table of size 11 with 5 unique keys:
+index				key value
+0				231
+1				23
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				121
+9				22
+10				21
+print completed
+
+
+table after rehash with 5 items
+
+printing table of size 11 with 5 unique keys:
+index				key value
+0				231
+1				23
+2				empty
+3				empty
+4				empty
+5				empty
+6				empty
+7				empty
+8				21
+9				22
+10				121
+print completed
+
+
+after increase table to 22 with 5 items
+
+printing table of size 22 with 5 unique keys:
+index				key value
+0				22
+1				23
+2				empty
+3				empty
+4				empty
+5				empty
+6				empty
+7				empty
+8				empty
+9				empty
+10				121
+11				231
+12				empty
+13				empty
+14				empty
+15				empty
+16				empty
+17				empty
+18				empty
+19				empty
+20				empty
+21				21
+print completed
+
+
+after larger table filled
+
+printing table of size 22 with 21 unique keys:
+index				key value
+0				22
+1				23
+2				2607
+3				2585
+4				2563
+5				2541
+6				2519
+7				2497
+8				2475
+9				2453
+10				121
+11				231
+12				empty
+13				2596
+14				2574
+15				2552
+16				2530
+17				2508
+18				2486
+19				2464
+20				2442
+21				21
+print completed
+
+----- Passed rehash driver -----
+
+Open addressing with linear probe sequence
+Using hash algorithm abs_hash
+Seed: 11172024
+
+----- Rehash driver -----
+Table size (13), load factor (0.9)
+0: about to insert 13 at position 0
+1: about to insert 14 at position 1
+2: about to insert 15 at position 2
+3: about to insert 16 at position 3
+4: about to insert 17 at position 4
+5: about to insert 18 at position 5
+6: about to insert 19 at position 6
+7: about to insert 20 at position 7
+8: about to insert 21 at position 8
+9: about to insert 22 at position 9
+10: about to insert 23 at position 10
+11: about to insert 24 at position 11
+
+full table, last entry empty
+
+printing table of size 13 with 12 unique keys:
+index				key value
+0				13
+1				14
+2				15
+3				16
+4				17
+5				18
+6				19
+7				20
+8				21
+9				22
+10				23
+11				24
+12				empty
+print completed
+
+0: about to retrieve and then replace 13
+1: about to retrieve and then replace 14
+2: about to retrieve and then replace 15
+3: about to retrieve and then replace 16
+4: about to retrieve and then replace 17
+5: about to retrieve and then replace 18
+6: about to retrieve and then replace 19
+7: about to retrieve and then replace 20
+8: about to retrieve and then replace 21
+9: about to retrieve and then replace 22
+10: about to retrieve and then replace 23
+11: about to retrieve and then replace 24
+about to delete 14
+
+second entry deleted, last entry empty
+
+printing table of size 13 with 11 unique keys:
+index				key value
+0				13
+1				deleted
+2				15
+3				16
+4				17
+5				18
+6				19
+7				20
+8				21
+9				22
+10				23
+11				24
+12				empty
+print completed
+
+
+ about to insert 27 at 1
+
+ after clearing out all but two keys
+
+printing table of size 13 with 2 unique keys:
+index				key value
+0				13
+1				27
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				deleted
+11				deleted
+12				empty
+print completed
+
+
+ about to insert 25 at 12
+
+ after inserting into delete or empty position 
+
+printing table of size 13 with 3 unique keys:
+index				key value
+0				13
+1				27
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				deleted
+11				deleted
+12				25
+print completed
+
+
+ about to search for 26 at 0
+
+ verify 5 items in table before rehash 
+
+printing table of size 13 with 5 unique keys:
+index				key value
+0				273
+1				27
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				143
+11				26
+12				25
+print completed
+
+
+table after rehash with 5 items
+
+printing table of size 13 with 5 unique keys:
+index				key value
+0				273
+1				27
+2				empty
+3				empty
+4				empty
+5				empty
+6				empty
+7				empty
+8				empty
+9				empty
+10				25
+11				26
+12				143
+print completed
+
+
+after increase table to 26 with 5 items
+
+printing table of size 26 with 5 unique keys:
+index				key value
+0				26
+1				27
+2				empty
+3				empty
+4				empty
+5				empty
+6				empty
+7				empty
+8				empty
+9				empty
+10				empty
+11				empty
+12				143
+13				273
+14				empty
+15				empty
+16				empty
+17				empty
+18				empty
+19				empty
+20				empty
+21				empty
+22				empty
+23				empty
+24				empty
+25				25
+print completed
+
+
+after larger table filled
+
+printing table of size 26 with 25 unique keys:
+index				key value
+0				26
+1				27
+2				3653
+3				3627
+4				3601
+5				3575
+6				3549
+7				3523
+8				3497
+9				3471
+10				3445
+11				3419
+12				143
+13				273
+14				empty
+15				3640
+16				3614
+17				3588
+18				3562
+19				3536
+20				3510
+21				3484
+22				3458
+23				3432
+24				3406
+25				25
+print completed
+
+----- Passed rehash driver -----
+
+Open addressing with double hashing
+Using hash algorithm abs_hash
+Seed: 11172024
+
+----- Rehash driver -----
+Table size (11), load factor (0.9)
+0: about to insert 11 at position 0 with decrement 1
+1: about to insert 12 at position 1 with decrement 1
+2: about to insert 13 at position 2 with decrement 1
+3: about to insert 14 at position 3 with decrement 1
+4: about to insert 15 at position 4 with decrement 1
+5: about to insert 16 at position 5 with decrement 1
+6: about to insert 17 at position 6 with decrement 1
+7: about to insert 18 at position 7 with decrement 1
+8: about to insert 19 at position 8 with decrement 1
+9: about to insert 20 at position 9 with decrement 1
+
+full table, last entry empty
+
+printing table of size 11 with 10 unique keys:
+index				key value
+0				11
+1				12
+2				13
+3				14
+4				15
+5				16
+6				17
+7				18
+8				19
+9				20
+10				empty
+print completed
+
+0: about to retrieve and then replace 11
+1: about to retrieve and then replace 12
+2: about to retrieve and then replace 13
+3: about to retrieve and then replace 14
+4: about to retrieve and then replace 15
+5: about to retrieve and then replace 16
+6: about to retrieve and then replace 17
+7: about to retrieve and then replace 18
+8: about to retrieve and then replace 19
+9: about to retrieve and then replace 20
+about to delete 12
+
+second entry deleted, last entry empty
+
+printing table of size 11 with 9 unique keys:
+index				key value
+0				11
+1				deleted
+2				13
+3				14
+4				15
+5				16
+6				17
+7				18
+8				19
+9				20
+10				empty
+print completed
+
+
+ about to insert 23 at 1
+
+ after clearing out all but two keys
+
+printing table of size 11 with 2 unique keys:
+index				key value
+0				11
+1				23
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				empty
+print completed
+
+
+ about to insert 21 at 10
+
+ after inserting into delete or empty position 
+
+printing table of size 11 with 3 unique keys:
+index				key value
+0				11
+1				23
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				21
+print completed
+
+
+ about to search for 22 at 0
+
+ verify 5 items in table before rehash 
+
+printing table of size 11 with 5 unique keys:
+index				key value
+0				231
+1				23
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				121
+9				22
+10				21
+print completed
+
+
+table after rehash with 5 items
+
+printing table of size 11 with 5 unique keys:
+index				key value
+0				231
+1				23
+2				empty
+3				empty
+4				empty
+5				empty
+6				empty
+7				empty
+8				21
+9				22
+10				121
+print completed
+
+
+after increase table to 23 with 5 items
+
+printing table of size 23 with 5 unique keys:
+index				key value
+0				23
+1				231
+2				empty
+3				empty
+4				empty
+5				empty
+6				121
+7				empty
+8				empty
+9				empty
+10				empty
+11				empty
+12				empty
+13				empty
+14				empty
+15				empty
+16				empty
+17				empty
+18				empty
+19				empty
+20				empty
+21				21
+22				22
+print completed
+
+
+after larger table filled
+
+printing table of size 23 with 22 unique keys:
+index				key value
+0				23
+1				231
+2				2486
+3				2464
+4				2442
+5				2607
+6				121
+7				2585
+8				2530
+9				2563
+10				2552
+11				2541
+12				2519
+13				2497
+14				2475
+15				2453
+16				2574
+17				empty
+18				2508
+19				2618
+20				2596
+21				21
+22				22
+print completed
+
+----- Passed rehash driver -----
+
+Open addressing with quadratic probe sequence
+Using hash algorithm abs_hash
+Seed: 11172024
+
+----- Rehash driver -----
+Table size (16), load factor (0.9)
+0: about to insert 16 at position 0
+1: about to insert 17 at position 1
+2: about to insert 18 at position 2
+3: about to insert 19 at position 3
+4: about to insert 20 at position 4
+5: about to insert 21 at position 5
+6: about to insert 22 at position 6
+7: about to insert 23 at position 7
+8: about to insert 24 at position 8
+9: about to insert 25 at position 9
+10: about to insert 26 at position 10
+11: about to insert 27 at position 11
+12: about to insert 28 at position 12
+13: about to insert 29 at position 13
+14: about to insert 30 at position 14
+
+full table, last entry empty
+
+printing table of size 16 with 15 unique keys:
+index				key value
+0				16
+1				17
+2				18
+3				19
+4				20
+5				21
+6				22
+7				23
+8				24
+9				25
+10				26
+11				27
+12				28
+13				29
+14				30
+15				empty
+print completed
+
+0: about to retrieve and then replace 16
+1: about to retrieve and then replace 17
+2: about to retrieve and then replace 18
+3: about to retrieve and then replace 19
+4: about to retrieve and then replace 20
+5: about to retrieve and then replace 21
+6: about to retrieve and then replace 22
+7: about to retrieve and then replace 23
+8: about to retrieve and then replace 24
+9: about to retrieve and then replace 25
+10: about to retrieve and then replace 26
+11: about to retrieve and then replace 27
+12: about to retrieve and then replace 28
+13: about to retrieve and then replace 29
+14: about to retrieve and then replace 30
+about to delete 17
+
+second entry deleted, last entry empty
+
+printing table of size 16 with 14 unique keys:
+index				key value
+0				16
+1				deleted
+2				18
+3				19
+4				20
+5				21
+6				22
+7				23
+8				24
+9				25
+10				26
+11				27
+12				28
+13				29
+14				30
+15				empty
+print completed
+
+
+ about to insert 33 at 1
+
+ after clearing out all but two keys
+
+printing table of size 16 with 2 unique keys:
+index				key value
+0				16
+1				33
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				deleted
+11				deleted
+12				deleted
+13				deleted
+14				deleted
+15				empty
+print completed
+
+
+ about to insert 31 at 15
+
+ after inserting into delete or empty position 
+
+printing table of size 16 with 3 unique keys:
+index				key value
+0				16
+1				33
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				deleted
+11				deleted
+12				deleted
+13				deleted
+14				deleted
+15				31
+print completed
+
+
+ about to search for 32 at 0
+
+ verify 5 items in table before rehash 
+
+printing table of size 16 with 5 unique keys:
+index				key value
+0				336
+1				33
+2				deleted
+3				deleted
+4				deleted
+5				deleted
+6				deleted
+7				deleted
+8				deleted
+9				deleted
+10				176
+11				deleted
+12				deleted
+13				32
+14				deleted
+15				31
+print completed
+
+
+table after rehash with 5 items
+
+printing table of size 16 with 5 unique keys:
+index				key value
+0				336
+1				33
+2				empty
+3				empty
+4				empty
+5				empty
+6				empty
+7				empty
+8				empty
+9				empty
+10				empty
+11				empty
+12				empty
+13				32
+14				31
+15				176
+print completed
+
+
+after increase table to 32 with 5 items
+
+printing table of size 32 with 5 unique keys:
+index				key value
+0				32
+1				33
+2				empty
+3				empty
+4				empty
+5				empty
+6				empty
+7				empty
+8				empty
+9				empty
+10				empty
+11				empty
+12				empty
+13				empty
+14				empty
+15				176
+16				336
+17				empty
+18				empty
+19				empty
+20				empty
+21				empty
+22				empty
+23				empty
+24				empty
+25				empty
+26				empty
+27				empty
+28				empty
+29				empty
+30				empty
+31				31
+print completed
+
+
+after larger table filled
+
+printing table of size 32 with 31 unique keys:
+index				key value
+0				32
+1				33
+2				5456
+3				5360
+4				5312
+5				5504
+6				5232
+7				5520
+8				empty
+9				5408
+10				5200
+11				5280
+12				5328
+13				5168
+14				5424
+15				176
+16				336
+17				5248
+18				5472
+19				5376
+20				5296
+21				5488
+22				5216
+23				5536
+24				5552
+25				5392
+26				5184
+27				5264
+28				5344
+29				5152
+30				5440
+31				31
+print completed
+
+----- Passed rehash driver -----
+
+Open addressing with linear probe sequence
+Using hash algorithm abs_hash
+Seed: 11172024
+
+----- Retrieve driver -----
+Table size (60), load factor (0.9)
+  Trials: 20
+  Build table with 54 random keys
+    The average number of probes for a successful search = 3.48148
+    Avg probes for unsuccessful search = 18.1 measured with 20 trials
+
+	Run with table size at least 101 (-m 101).  Try -m 65537 and 655373
+	Or, -m 65536 -h quad. Or with table 16 times larger: -m 1048576 -h quad but many duplicates
+----- End of access driver -----
+
+Open addressing with double hashing
+Using hash algorithm abs_hash
+Seed: 11172024
+
+----- Deletion driver for table size 7. Compare to HW8.6-----
+
+	This driver works best with linear probing but can work with double
+
+	k0 is 5 for location 5
+	k1 is 12 for location 5
+	k2 is 18 for location 4
+	k3 is 19 for location 5
+	k4 is 26 for location 5
+	k5 is 33 for location 5
+
+table with k0, k1, k2, and k3
+
+printing table of size 7 with 4 unique keys:
+index				key value
+0				empty
+1				19
+2				empty
+3				12
+4				18
+5				5
+6				empty
+print completed
+
+
+table after deleting k0 and k1.  Table has k2 and k3
+
+printing table of size 7 with 2 unique keys:
+index				key value
+0				empty
+1				19
+2				empty
+3				deleted
+4				18
+5				deleted
+6				empty
+print completed
+
+
+table after replacing k3.  Verify it is replaced not inserted
+
+printing table of size 7 with 2 unique keys:
+index				key value
+0				empty
+1				19
+2				empty
+3				deleted
+4				18
+5				deleted
+6				empty
+print completed
+
+
+table after inserting k5 into position 5
+
+printing table of size 7 with 3 unique keys:
+index				key value
+0				empty
+1				19
+2				empty
+3				deleted
+4				18
+5				33
+6				empty
+print completed
+
+
+----- Deletion driver for full table with size 7. Compare to HW8.7 -----
+	k0 is 7 for location 0
+	k1 is 8 for location 1
+	k2 is 9 for location 2
+	k3 is 10 for location 3
+	k4 is 11 for location 4
+	k5 is 12 for location 5
+	k6 is 13 for location 6
+	k7 is 14 for location 0
+	k8 is 16 for location 2
+
+table that is full
+
+printing table of size 7 with 6 unique keys:
+index				key value
+0				7
+1				8
+2				9
+3				10
+4				11
+5				12
+6				empty
+print completed
+
+
+table after deleting all but one key.  One empty location
+
+printing table of size 7 with 1 unique keys:
+index				key value
+0				deleted
+1				deleted
+2				deleted
+3				deleted
+4				deleted
+5				12
+6				empty
+print completed
+
+
+table after inserting k6 into last empty location
+
+printing table of size 7 with 2 unique keys:
+index				key value
+0				deleted
+1				deleted
+2				deleted
+3				deleted
+4				deleted
+5				12
+6				13
+print completed
+
+
+table after inserting k7 into position 0. 7 probes were required
+
+printing table of size 7 with 3 unique keys:
+index				key value
+0				14
+1				deleted
+2				deleted
+3				deleted
+4				deleted
+5				12
+6				13
+print completed
+
+Did not find 16 after 7 probes
+Open addressing with quadratic probe sequence
+Using hash algorithm abs_hash
+Seed: 11172024
+
+----- Rehash driver -----
+Table size (64), load factor (0.9)
+	re-run with -v for verbose prints
+----- Passed rehash driver -----
+
+Open addressing with linear probe sequence
+Using hash algorithm abs_hash
+Seed: 11172024
+
+printing table of size 7 with 0 unique keys:
+index				key value
+0				empty
+1				empty
+2				empty
+3				empty
+4				empty
+5				empty
+6				empty
+print completed
+
+table is now full
+
+printing table of size 7 with 6 unique keys:
+index				key value
+0				8
+1				1
+2				2
+3				3
+4				4
+5				5
+6				empty
+print completed
+
+now trying to insert into full table with an empty cell
+
+printing table of size 7 with 6 unique keys:
+index				key value
+0				8
+1				1
+2				2
+3				3
+4				4
+5				5
+6				empty
+print completed
+
+now trying to delete entry not in full table
+
+printing table of size 7 with 6 unique keys:
+index				key value
+0				8
+1				1
+2				2
+3				3
+4				4
+5				5
+6				empty
+print completed
+
+replacing the empty cell with a deleted cell then attempting an insert followed
+by a delete of a key not in the table
+
+printing table of size 7 with 6 unique keys:
+index				key value
+0				8
+1				1
+2				2
+3				3
+4				4
+5				5
+6				deleted
+print completed
+
