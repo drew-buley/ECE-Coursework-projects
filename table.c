@@ -3,6 +3,8 @@
  * C20407096
  * 12/05/2024
  * MP6
+ * 
+ * This is the main file That was written for this project by me
  *
  * Purpose: This file contains functions for creating and maintaining
  *          a hash table ADT. It was built to be called by lab6.c and was only tested

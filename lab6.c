@@ -5,6 +5,8 @@
  * C20407096
  * 12/5/2024
  *
+ * This file was majorily PROVIDED for the hashes project. Function twoSum was written by me.
+ *
  * This file contains drivers to test the Hash Table ADT package.
  *
  *   -m to set the table size

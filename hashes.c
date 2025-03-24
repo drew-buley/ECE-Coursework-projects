@@ -2,12 +2,7 @@
  * Lab6: Hash Tables 
  * ECE 2230, Fall 2024
  * 
- *
- * For MP6: you do not need to modify this file.  Use these functions:
- *
- *    hashes_table_pos
- *    hashes_probe_dec
- *
+ * Written as a utility file for my hashes project. WAS PROVIDED CODE WHOSE USE WAS MANDATED
  *
  * Most notes and functions are from Eternally Confuzzled web page by Julienne
  * Walker (JSW).  Now hosted on:
