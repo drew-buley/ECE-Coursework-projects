@@ -2,7 +2,7 @@
  * Lab6: Hash Tables 
  * ECE 2230, Fall 2024
  * 
- * Written as a utility file for my hashes project. WAS PROVIDED CODE WHOSE USE WAS MANDATED
+ * Provided utility file for the project
  *
  * Most notes and functions are from Eternally Confuzzled web page by Julienne
  * Walker (JSW).  Now hosted on:
