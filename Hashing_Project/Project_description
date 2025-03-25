@@ -1,0 +1,16 @@
+This folder contains a hash table project that I completed as a part of my Data Structures and Algorithms class during Fall 2024.
+Several of the files were provided as a part of the project to give a sufficient starting point and allow the project to be completed and tested within the time window.
+
+Provided in full:
+ - Hashes.h
+ - makefile
+ - table.h
+
+Other files required both major and minor changes to their code to allow for proper functionality.
+
+Provided in partial:
+ - hashes.c
+ - lab6.c
+ - table.c
+
+The majority of the work I completed on this project was in the implementation of the 
