@@ -2,6 +2,8 @@
  * Lab6: Hash Tables 
  * ECE 2230, Fall 2024
  *
+ * Provided utility file for the project
+ *
  * See notes is hashes.c for details
  *
  * No changes are needed
