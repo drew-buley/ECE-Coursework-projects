@@ -1,0 +1,91 @@
+# Drew Buley
+# C20407096
+# 11/13/2024
+# MP5
+
+# Purpose: This document describes steps to ensure proper function of the bst in MP5
+
+# Assumptions: Added tests are placed after the components they use I.E. the components  have been tested
+#              by earlier unit tests
+
+# Note: Provided Unit tests 0 and 5 have been modified
+#       Custom built unit tests 9 and 10
+
+# ------------------Test 1-------------------
+Test 1
+Desciption: Create headerblock, check utility functions response to empty tree, free header
+Called by: ./lab5 -u 9
+Expected Output: Functions correctly respond to being called on empty list (root = NULL)
+                 search returns NULL, level returns 0, size returns 0, stats returns 0,
+                 path length returns 0
+
+# -----------------Test 2-------------------
+Test 2
+Desciption: Add nodes to tree, print tree, remove nodes from tree, print tree
+            Remove tests taking out node with no children, a child with no grandchild, and a child with 2 grandchilds
+            Runnign with valgrind ensures remove properly handles memory
+Called by: ./lab5 -u 0
+           valgrind ./lab5 -u -0
+Expected Output: Tree correctly printed after each insert
+                 Tree correctly printed after each remove
+                 Call with valgrind to ensure correct removal
+                 
+#-------------------Test 3------------------
+Test 3
+Desciption: Various inserts and removals designed to test correct linking
+            first call checks removing nodes with 2 children including the root via choosing a predecessor/successor
+            second call checks more advanced predecessor/successor cases
+            third call checks very advanced predecessor/successor cases
+Called by: ./lab5 -u 1 
+           ./lab5 -u 2
+           ./lab5 -u 3
+Expected Output: For each called unit test, the tree remains printed correctly
+                 pay close attention to which node is selected as predecessor/sucessor,
+                 ensure chosen node is correct and tree remains valid after each removal
+
+#-------------------Test 4------------------
+Test 4
+Desciption: Tests insertion of duplicant key. Rerun with valgrind to ensure old data freed correctly
+Called by: ./lab5 -u 4
+           valgrind ./lab5 -u 4
+Expected Output: Node is inserted, the old data freed, and the new data linked to the node
+
+
+#-------------------Test 5------------------
+Test 5
+Desciption: Attempt to remove key not in list
+Called by: ./lab5 -u 5
+Expected Output: Tree should be successfully built, atttempt to remove key should not alter it
+
+
+#-------------------Test 6------------------
+Test 6
+Desciption: Build a tree, remove all nodes in the tree, fill again, remove all again
+Called by: ./lab5 -u 10
+Expected Output: Printed tree starts empty, fills, becomes empty again, is filled again, and is emptied again
+
+#-------------------Test 7------------------
+Test 7
+Desciption: Small scale test of number of comparisons
+Called by: ./lab5 -u7 -w3
+Expected Output: All even keys should be found in the tree using an odd number of comparisons
+                 all odd keys should NOT be found and the comparisons to fail to find should be even
+
+#-------------------Test 8------------------
+Test 8
+Desciption: Large scale random insertions and removals to test expected time complexity
+            first call ensures functionality of random tests in general
+            second call tests large numbers of random keys
+            third call tests for memory leakage with large amount of trials
+            fourth call tests for huge amount of trials
+Called by: ./lab5 -e -w4 -t10 -v -s 345
+           ./lab5 -e -w10 -t100000
+           valgrind ./lab5 -e -w10 -t100000
+           ./lab5 -e -w20 -t1000000
+Expected Output: Valgrind trial should show no memory leakage
+                 Large and Huge trials must show that the time to search for
+                 successful and unsuccessful values must be close to the expected values
+                 Drastically wrong values at huge level should indicate could indicate an incorrect complexity
+
+
+

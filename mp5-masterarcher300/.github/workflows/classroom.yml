@@ -1,0 +1,29 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Basic equilibrium test
+      id: basic-equilibrium-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic equilibrium test
+        setup-command: make clean; make
+        command: "./lab5 -e"
+        timeout: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        BASIC-EQUILIBRIUM-TEST_RESULTS: "${{steps.basic-equilibrium-test.outputs.result}}"
+      with:
+        runners: basic-equilibrium-test
