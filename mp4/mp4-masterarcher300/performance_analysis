@@ -1,0 +1,108 @@
+Drew Buley
+Performance Analysis of lab4
+2024
+
+project: dynamic memory manager utilizing a circular 1 way linked list
+
+---------tradeoffs for implementation-----------
+
+  - 1 way linked list advantages
+      -simpler structure which reduces the memory overhead of the list.
+      - can efficiently traverse the list by simply incrementing the Rover
+      - better accuracy to user's requested memory as unit size smaller
+
+  - 1 way linked list disadvantages
+      - restricts movement to a single direction so can increase search time
+        to find a target node
+
+  - 2 way linked list advantages
+      - would have allowed for easier access of previous nodes and faster search time
+        for target nodes.
+      - easier to preserve the chain when inserting or deleting a node from the list
+  - 2 way linked list disadvantages
+      - additional memory overhead.
+      - worse accuracy to user's requested memory as unit size is larger
+
+
+
+  - First fit advantages
+      - better allocation speed as selects first block that is large enough
+
+  - First fit disadvantages
+      - has higher overall fragmentation rate than best fit
+
+  - Best fit advantages
+      - maximizes the usage of requested memory and is more memory efficient
+      - lower fragmentation rate as will attempt to use up any block it can
+
+  - Best fit disadvantages
+      - lower allocation speed due to needing to search until exact match is
+        found or entire list is traversed
+
+
+
+  - effect of Coalessing
+      - minimizes fragmentation by combining freed blocks when able
+      - adds runtime to each alloc (I use free to place remaining block in sorted) 
+        and free.
+      - lowers memory overhead by reducing number of "active" headers in list
+
+-----------design evaluation--------------
+
+baseline: calling equilibrium with system malloc and free
+T = 100000, w = 1000, a = 128, r = 127, Time(ms)
+    - -e:           Time: 84.84
+    - -f best -e:   Time: 86.792
+    - -c -e:        Time: 88.35
+    - -f best -c -e Time: 95.549
+
+testing my versions using same inputs
+    - -e:           Time: 2513
+    - -f best -e    Time: 369.8
+    - -c -e         Time: 208
+    - -f best -c -e Time: 177.1
+
+As expected, system malloc and free are substancially faster than my versions.
+Interestingly, adding flags significantly improved my code's response time.
+I was unable to identify the exact cause, as both best fit and first fit
+are done in the same loop, just with different conditions enabled. My theory
+is that since equilibrium driver by default works with smaller sizes, best fit
+was able to routinely completely remove nodes from the list and coalessing was able to
+do the same for the free side of the operations.
+
+repeating with smaller sample size:
+T = 300, w = 100, a = 512, r = 32, Time(ms)
+system malloc and free
+    - -e:            Time: 0.107
+    - -c -e:         Time: 0.117
+    - -f best -e:    Time: 0.138
+    - -c -f best -e: Time: 0.127
+
+testing with my versions using same inputs
+    - -e:            Time: 0.218
+    - -c -e:         Time: 0.143
+    - -f best -e:    Time: 0.282
+    - -c -f best -e: Time: 0.254
+
+These additional tests reveal that coalessing is lowering the average runtime of my code when
+compared to coalessing disabled. This is likely due the speed of reinserting nodes into the list
+when it is already sorted. Also, these values are much closer to the system's functions times which
+suggests that my algorithms are operating at a higher complexity class than the system's.
+
+
+--------------edge case analysis-----------
+the first two edge cases asked to be speficically checked dealt with large request sizes
+./lab4 -e -w10 -t1000 -a 1024 -r8
+./lab4 -e -w10 -t1000 -a 4096 -r8
+
+My code ran  without crashing and ran with times 1.49ms and 3.981ms respectively
+
+the second edge case asked to be specifically checked dealt with requests of all the same size
+./lab4 -e -w10 -t1000 -a124 -r0
+
+My code ran this without crashing and ran with time 54.172
+
+additionally, for each of the metioned examples, the average was greater than, or equal to, the minimum.
+Also, the average was less than, or equal to, the maximum
+
+

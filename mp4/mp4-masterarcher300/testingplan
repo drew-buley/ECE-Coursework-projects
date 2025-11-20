@@ -1,0 +1,82 @@
+Drew Buley
+Testing plan for lab 4
+2024
+
+This document describes the testing of lab4 and explains
+the recommended order and purpose of calling several unit
+testing functions from the main driver.
+
+the 4 options described below are running the program with
+    -first fit no coalescing
+    -best fit no coalescing
+    -first fit coalescing
+    -best fit coalescing
+
+----------------Beginning of testing plan------------------
+
+Call unit driver 0 with all 4 options
+./lab4 -u0
+./lab4 -c -u0
+    - the small size of bytes requested will ensure only basic
+      functionality of alloc and free
+    - tests best and first capability to splice blocks
+
+Call unit driver 5 with all 4 options
+./lab4 -u5
+    - requests INT_MAX bytes. This should be rejected by sbrk, which is then passed on
+      to morecore as a fail, which should then be passed on to Mem_alloc, which should return NULL
+    - If it doesn't, go fix it as this will likely cause instability for your computer.
+
+call unit driver 4 with all 4 options
+./lab4 -u4
+./lab4 -f best -u4
+./lab4 -c -u4
+./lab4 -c -f best -u4
+    - test serves to check that stats and print are working correctly
+        - special cases where list contains just dummy block
+    - these functions are imparitive to testing more advanced drivers
+    - expected results when called are pronting just the dummy block
+      with an average, min, and max fields equal to zero in stats
+
+call unit driver 1 with all 4 options
+./lab4 -u1
+./lab4 -f best -u1
+./lab4 -c -u1
+./lab4 -c -f best -u1
+    - test fragments 1 block exactly, by adjusting free order it heavily tests
+      coalescing (should reunite the entire block).
+    - test also combines an additional call for part of an additional page
+        - when coalescing enabled, it is possible these 2 blocks become
+          joined into one block if they are sequential
+        - this behavior is not guarenteed as depends on morecore allocation
+    - free list should contain only the dummy block after all fragments of block one allocated
+
+
+call unit driver 2 with all 4 options
+./lab4 -u2
+./lab4 -f best -u2
+./lab4 -c -u2
+./lab4 -c -f best -u2
+    - test performs same fragmentation as driver 1 except frees in different order
+        - ensure free list retains poessession of all blocks once returned from user
+    - test also calls those same blocks again but smaller in increments of 1 unit
+        - this will produce different behavior depending on which toggles are enabled
+            - non-coal, first: will further fragment the fragments created in part 1,
+              end free list will contain blocks of extremly small size
+            - non-coal, best: similar to non-coal, first except leftover blocks will be of different size
+            - coal options will always have all fragments reunited at end
+
+note that by calling driver 1 and 2, all methods of coalessing are called
+
+call unit driver 3 with all 4 options
+./lab4 -u3
+./lab4 -f best -u3
+./lab4 -c -u3
+./lab4 -c -f best -u3
+    - driver 3 tests size requests close to the page boundary
+    - tests bytes size + header equal to just below a page, equal to a page
+      slightly above a page, and way above a page.
+    - expected return is 6 pages in free list with 4 morecore calls
+
+
+
