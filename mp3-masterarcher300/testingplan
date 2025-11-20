@@ -1,0 +1,74 @@
+200
+sets task size to huge for testing sorting, not processing
+test each sort with list size 0
+SORT 1
+SORT 2
+SORT 3
+SORT 4
+SORT 5
+PRINTREQ
+
+expected output should be all sorts run, no items in the list
+
+test each list with list size 1
+REQ 123
+SORT 1
+SORT 2
+SORT 3
+SORT 4
+SORT 5
+PRINTREQ
+
+expected output should be only rec 123
+list size 1 is sorted implicitly.
+
+test each list with list size 2
+each sort call will be on an already sorted list
+
+REQ 321
+SORT 1
+PRINTREQ
+SORT 2
+PRINTREQ
+SORT 3
+PRINTREQ
+SORT 4
+PRINTREQ
+SORT 5
+PRINTREQ
+
+expected output: list remains sorted in ascending order after each call
+no additional copies of the records should exist in the lists.
+
+test functionality with lists of size 3 of ascending input, random input, and duplicant inputs
+expected output is ascending list of 123, 321, 567
+
+REQ 567
+SORT 1
+PRINTREQ
+SORT 2
+PRINTREQ
+SORT 3
+PRINTREQ
+SORT 4
+PRINTREQ
+SORT 5
+PRINTREQ
+
+
+test functionality of lists with size of 4 in ascending input, random input, and duplicant inputs
+expected output is ascending sorted list with 123, 321, 567, 789
+
+REQ 789
+SORT 1
+PRINTREQ
+SORT 2
+PRINTREQ
+SORT 3
+PRINTREQ
+SORT 4
+PRINTREQ
+SORT 5
+PRINTREQ
+
+QUIT

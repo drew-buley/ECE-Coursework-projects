@@ -1,0 +1,22 @@
+FIFO list has 20 records
+0:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+1:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+2:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+3:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+4:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+5:  Dept ID: 2, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+6:  Dept ID: 2, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+7:  Dept ID: 2, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+8:  Dept ID: 2, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+9:  Dept ID: 2, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+10:  Dept ID: 3, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+11:  Dept ID: 3, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+12:  Dept ID: 3, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+13:  Dept ID: 3, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+14:  Dept ID: 3, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+15:  Dept ID: 4, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+16:  Dept ID: 4, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+17:  Dept ID: 4, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+18:  Dept ID: 4, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+19:  Dept ID: 4, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+

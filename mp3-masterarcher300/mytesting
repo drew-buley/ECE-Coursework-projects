@@ -1,0 +1,23 @@
+20	0.002000	1
+FIFO list has 20 records
+0:  Dept ID: 0, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 6
+1:  Dept ID: 0, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 13
+2:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 19
+3:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 18
+4:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 17
+5:  Dept ID: 1, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 1
+6:  Dept ID: 2, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 11
+7:  Dept ID: 2, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 9
+8:  Dept ID: 4, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 12
+9:  Dept ID: 4, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 2
+10:  Dept ID: 5, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 14
+11:  Dept ID: 6, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 16
+12:  Dept ID: 7, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 8
+13:  Dept ID: 7, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 3
+14:  Dept ID: 8, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 4
+15:  Dept ID: 10, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 7
+16:  Dept ID: 10, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 0
+17:  Dept ID: 20, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 15
+18:  Dept ID: 20, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 10
+19:  Dept ID: 20, tk: 0, user         , IP: 0, Loc: 0, Auth: F, PW: N, Key: a, Time: 0, order: 5
+
