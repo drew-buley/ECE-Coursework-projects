@@ -1,6 +1,6 @@
 This repository houses a few of the projects I have undertaken during my coursework here at Clemson.
 
-Projects usually were completed over the course of 1 intensive week that included project coding, debugging, testing, and documenting.
+Projects usually were completed over the course of 1 intensive week that included coding, debugging, testing, and documenting.
 
 Key areas of focus were:
  - learning how/when to utilize different ADTs
